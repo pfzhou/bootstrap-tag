@@ -30,7 +30,7 @@
           <h2>Example</h2>
           <p>A basic plugin for quickly creating elegant tag inputs with any form text input.</p>
           <div class="bs-docs-example" style="background-color: #f5f5f5;">
-            <input type="text" name="tags" value="One, Five" data-provide="tag">
+            <input type="text" name="myTag" id="myTag" value="One,Five,six" data-provide="tag">
           </div>
           <pre class="prettyprint linenums">&lt;input type="text" name="tags" data-provide="tag"&gt;</pre>
           <hr class="bs-docs-separator">
@@ -110,7 +110,7 @@ $('#myTag').on('added', function (e, value) {
       </div>
     </div>
     <!-- Bootstrap -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
     <script src="http://twbs.github.io/bootstrap/2.3.2/assets/js/google-code-prettify/prettify.js"></script>
     <script src="../js/bootstrap-tag.js"></script>
@@ -120,6 +120,25 @@ $('#myTag').on('added', function (e, value) {
                 window.prettyPrint && prettyPrint()
             })
         }(window.jQuery)
+
+        //$(document).ready(function () {
+          //alert(1);
+          var tagObj = $('#myTag');
+//debugger
+          var arr = tagObj[0].value.split(",");
+          var arr1 = ['abc', 'aaa', 'a', '123', 'TWO', 'two'];
+          alert(arr + '---' + arr1);
+          //alert(arr1);
+          var options = {
+            //allowDuplicates:true,
+            autocompleteOnComma:true,
+            source:arr
+          };
+          tagObj.tag(options);
+        //}
+        $('#myTag').on('added', function (e, value) {
+          //alert(value);
+        })
     </script>
   </body>
 </html>
